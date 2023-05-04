@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package organization;
+
+import "google/api/annotations.proto";
+
+option go_package = "/v1/organization";
+
+service OrganizationService {
+    rpc QueryProfile(QueryRequest) returns (ProfileResponse) {
+            option (google.api.http) = {
+              get: "/api/v1/organization"
+         };
+    }
+
+}
+
+message QueryRequest {
+    string inn = 1;
+}
+
+message ProfileResponse {
+    string inn = 1;
+    string kpp = 2;
+    string name = 3;
+    string ceo = 4;
+}
